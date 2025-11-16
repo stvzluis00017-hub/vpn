@@ -215,7 +215,7 @@ async def descargar_chunk_con_progreso(session, enlace, progress_bar, chunk_num)
     }
     try:
         # Iniciar descarga
-        async with session.get(enlace, ssl=False, headers=headers) as response:
+        async with session.get(enlace, ssl=False) as response:
             if response.status == 200:
                 # Obtener tamaño del contenido si está disponible
                 content_length = response.headers.get('Content-Length')
@@ -364,4 +364,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\n\n👋 Programa terminado por el usuario")
     except Exception as e:
+
         print(f"\n❌ Error inesperado: {str(e)}")
